@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+  background-color: gray;
+}
+
+button {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.buttonAction{
+  background-color: antiquewhite;
+  border: 3px solid black;
+  padding: 13px;
+}
+
+.loginForm{
+  width: 40%;
+  height: 40vh;
+  border: 5px solid black;
+  border-radius: 15px;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(172, 176, 180);
+}
+
+.loginForm h1{
+  padding: 20px;
+  padding-bottom: 40px;
+  background: linear-gradient(to right, black, blue);
+  background-clip: text;
+  color: transparent;
+}
+
+.loginForm label{
+  display: inline-block;
+  width: 250px;
+  text-align: left;
+  font-size: large;
+  margin-bottom: 50px;
+}
+.loginForm label input{
+  float: right;
+}
+
+.loginForm button{
+  width: 40%;
+  font-weight: bolder;
+}
+
+.loginForm button:hover{
+  transition: 1s;
+  background: linear-gradient(to right, black, blue);
+}
