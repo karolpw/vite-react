@@ -53,12 +53,30 @@ button {
   float: right;
 }
 
-.loginForm button{
+.formButton{
   width: 40%;
   font-weight: bolder;
 }
 
-.loginForm button:hover{
+.formButton:hover{
   transition: 1s;
-  background: linear-gradient(to right, black, blue);
+  color: blue;
+  font-weight: bolder;
+  border: 1px solid blue;
+}
+
+.changeAuth{
+  border: 0;
+  background-color: transparent;
+}
+
+.changeAuth:hover{
+  font-weight: bolder;
+  color: blue;
+  transition: 1s;
+}
+
+.errorMessage{
+  color: red;
+  font-size: 50px;
 }
