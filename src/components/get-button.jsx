@@ -9,7 +9,7 @@ function btnGet(){
     const handleClick =async () =>{
         setHasAction(true)
     
-        const response = await fetch('http://localhost:3000/posts');
+        const response = await fetch(import.meta.env.VITE_POSTS_URL);
         const data = await response.json();
         setPosts(data);
 

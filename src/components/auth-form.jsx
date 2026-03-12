@@ -1,5 +1,6 @@
 import React from 'react';
-import { useState } from 'react'
+import { useState } from 'react';
+import {LOGIN_URL, REGISTER_URL} from "../.env"
 
 function AuthForm({ onLogin }) {
 
@@ -9,7 +10,7 @@ function AuthForm({ onLogin }) {
     const [message, setMessage] = useState('');
 
     const handleSubmit = async () =>{
-        const url = isLogin ? 'http://localhost:3000/auth/login' : 'http://localhost:3000/auth/register';
+        const url = isLogin ? import.meta.env.VITE_LOGIN_URL : import.meta.env.VITE_REGISTER_URL
 
         
     
@@ -46,7 +47,7 @@ function AuthForm({ onLogin }) {
                 <button onClick={() => setIsLogin(!isLogin)} type='button' className='changeAuth'>
                     {isLogin ? "Stwórz konto" : "Zaloguj się"}
                 </button>
-                {message && <p className='errorMessage'>{message}</p>}
+                {/* {message && <p className='errorMessage'>{message}</p>} */}
             </form>
             
         </>
