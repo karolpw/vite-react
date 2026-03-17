@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 
 function GetPosts() {
     const [posts, setPosts] = useState([]);
-    const [wholePost, setWholePost] = useState(false);
     const [openPostId, setOpenPostId] = useState(null);
 
 
