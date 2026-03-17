@@ -22,46 +22,44 @@ function AddPosts() {
     const data = await response.json();
   };
   return (
-    <>
-      <div>
-        <h2>Dodaj post</h2>
-        <form>
-          <label>
-            Tytuł <br />{" "}
-            <input
-              type="text"
-              onChange={(e) => setTitle(e.target.value)}
-              value={title}
-              id="title"
-            />
-          </label>
-          <br />
-          <label>
-            Lead <br />{" "}
-            <input
-              type="text"
-              onChange={(e) => setLead(e.target.value)}
-              value={lead}
-              id="lead"
-            />
-          </label>
-          <br />
-          <label>
-            Treść <br />{" "}
-            <input
-              type="text"
-              onChange={(e) => setContent(e.target.value)}
-              value={content}
-              id="content"
-            />
-          </label>
-          <br />
-          <button type="button" onClick={handleSubmit}>
-            Dodaj
-          </button>
-        </form>
-      </div>
-    </>
+    <div>
+      <h2>Dodaj post</h2>
+      <form>
+        <label>
+          Tytuł{" "}
+          <input
+            type="text"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+            id="title"
+          />
+        </label>
+
+        <label>
+          Lead{" "}
+          <input
+            type="text"
+            onChange={(e) => setLead(e.target.value)}
+            value={lead}
+            id="lead"
+          />
+        </label>
+
+        <label>
+          Treść{" "}
+          <input
+            type="text"
+            onChange={(e) => setContent(e.target.value)}
+            value={content}
+            id="content"
+          />
+        </label>
+
+        <button type="button" onClick={handleSubmit}>
+          Dodaj
+        </button>
+      </form>
+    </div>
   );
 }
 

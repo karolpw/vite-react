@@ -9,8 +9,8 @@ function AuthForm({ onLogin }) {
 
   const handleSubmit = async () => {
     const url = isLogin
-      ? import.meta.env.VITE_LOGIN_URL
-      : import.meta.env.VITE_REGISTER_URL;
+      ? `${import.meta.env.LOCAL_API_URL}/auth/login`
+      : `${import.meta.env.LOCAL_API_URL}/auth/register`
 
     const response = await fetch(url, {
       method: "POST",
@@ -44,7 +44,7 @@ function AuthForm({ onLogin }) {
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
-        <br />
+
         <label>
           Hasło{" "}
           <input
@@ -54,12 +54,10 @@ function AuthForm({ onLogin }) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <br />
 
         <button type="button" className="formButton" onClick={handleSubmit}>
           {isLogin ? "Zaloguj się" : "Zarejestruj się"}
         </button>
-        <br />
 
         <button
           onClick={() => setIsLogin(!isLogin)}

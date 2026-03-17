@@ -10,13 +10,13 @@ function App() {
   const [showAuth, setShowAuth] = useState(false);
   const [addPost, setAddPost] = useState(false);
 
-  if(addPost && token){
+  if (addPost && token) {
     return (
       <>
-        <AddPosts/>
+        <AddPosts />
         <button onClick={() => setAddPost(false)}>wróć</button>
       </>
-    )
+    );
   }
 
   if (showAuth && !token) {
