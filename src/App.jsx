@@ -65,7 +65,7 @@ function App() {
         onAddPost={() => setAddPost(true)}
       />
       <main>
-        <h1>Witaj na Blog.dev</h1>
+        <h1>Witaj na BLOG.DEV</h1>
         <GetPosts />
       </main>
       <footer>footer</footer>
