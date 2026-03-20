@@ -1,0 +1,43 @@
+.header {
+    background-color: #1f2937;
+    padding: 0 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.header_inner {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header_logo {
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.header_nav {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn{
+    padding: 0.4rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn_primary {
+    background-color: #2563eb;
+    color: #FFFFFF;
+}
+
+.btn_secondary{
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}

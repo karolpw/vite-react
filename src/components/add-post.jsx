@@ -1,16 +1,17 @@
 import React from "react";
 import { useState } from "react";
+import './add-post.css'
 
-function AddPosts() {
+function AddPosts({ onClose }) {
   const [title, setTitle] = useState("");
   const [lead, setLead] = useState("");
   const [content, setContent] = useState("");
 
   const handleSubmit = async () => {
-    const url = import.meta.env.VITE_POSTS_URL;
+    const url = import.meta.env.VITE_API_URL;
     const token = localStorage.getItem("token");
 
-    const response = await fetch(url, {
+    const response = await fetch(`${url}/posts`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,41 +23,43 @@ function AddPosts() {
     const data = await response.json();
   };
   return (
-    <div>
-      <h2>Dodaj post</h2>
-      <form>
-        <label>
-          Tytuł{" "}
+    <div className="add-post">
+      <h2 className="add-post_title">Dodaj post</h2>
+      <form className="add-post_form">
+        <div className="add-post_field">
+          <label className="add-post_label">Tytuł</label>
           <input
             type="text"
+            className="add-post_input"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
-            id="title"
           />
-        </label>
+        </div>
 
-        <label>
-          Lead{" "}
+        <div className="add-post_field">
+          <label className="add-post_label">Lead</label>
           <input
             type="text"
+            className="add-post_input"
             onChange={(e) => setLead(e.target.value)}
             value={lead}
-            id="lead"
           />
-        </label>
+        </div>
 
-        <label>
-          Treść{" "}
-          <input
-            type="text"
+        <div className="add-post_field">
+          <label className="add-post_label">Treść</label>
+          <textarea
+            className="add-post_textarea"
             onChange={(e) => setContent(e.target.value)}
             value={content}
-            id="content"
           />
-        </label>
+        </div>
 
-        <button type="button" onClick={handleSubmit}>
+        <button type="button" onClick={handleSubmit} className="add-post_submit">
           Dodaj
+        </button>
+        <button type="button" onClick={onClose} className="add-post_back">
+          Wróć
         </button>
       </form>
     </div>

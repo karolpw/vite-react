@@ -1,8 +1,8 @@
 import { useState } from "react";
+import Header from "./components/header";
 import GetPosts from "./components/get-posts";
 import AuthForm from "./components/auth-form";
 import AddPosts from "./components/add-post";
-
 import "./App.css";
 
 function App() {
@@ -10,11 +10,21 @@ function App() {
   const [showAuth, setShowAuth] = useState(false);
   const [addPost, setAddPost] = useState(false);
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setToken(null);
+  };
+
   if (addPost && token) {
     return (
       <>
-        <AddPosts />
-        <button onClick={() => setAddPost(false)}>wróć</button>
+        <Header
+          token={token}
+          onLogout={handleLogout}
+          onAddPost={() => setAddPost(true)}
+          onShowAuth={() => setShowAuth(true)}
+        />
+        <AddPosts onClose={() => setAddPost(false)}/>
       </>
     );
   }
@@ -22,45 +32,41 @@ function App() {
   if (showAuth && !token) {
     return (
       <>
-        <AuthForm
-          onLogin={(t) => {
-            setToken(t);
-            setShowAuth(false);
-          }}
-        />
-        <button
-          onClick={() => {
-            setShowAuth(false);
+        <Header token={token} onShowAuth={() => setShowAuth(true)} />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "calc(100vh - 60px)",
+            background: "#F9FAFB",
           }}
         >
-          Wróć
-        </button>
+          <AuthForm
+            onLogin={(t) => {
+              setToken(t);
+              setShowAuth(false);
+            }}
+            onClose={() => {
+              setShowAuth(false)
+            }}
+          />
+        </div>
       </>
     );
   }
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setToken(null);
-  };
-
   return (
     <>
-      <header>
-        <h2>Blog.dev</h2>
-        {token ? (
-          <>
-            <button onClick={() => setAddPost(true)}>Dodaj post</button>
-            <button onClick={handleLogout}>Wyloguj</button>
-          </>
-        ) : (
-          <button onClick={() => setShowAuth(true)}>Zaloguj się</button>
-        )}
-      </header>
+      <Header
+        token={token}
+        onLogout={handleLogout}
+        onShowAuth={() => setShowAuth(true)}
+        onAddPost={() => setAddPost(true)}
+      />
       <main>
         <h1>Witaj na Blog.dev</h1>
         <GetPosts />
-        {!token && showAuth && <AuthForm onLogin={setToken} />}
       </main>
       <footer>footer</footer>
     </>
