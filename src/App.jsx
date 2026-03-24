@@ -3,6 +3,7 @@ import Header from "./components/header";
 import GetPosts from "./components/get-posts";
 import AuthForm from "./components/auth-form";
 import AddPosts from "./components/add-post";
+import MobileNav from "./components/mobile-nav";
 import "./App.css";
 
 function App() {
@@ -24,7 +25,16 @@ function App() {
           onAddPost={() => setAddPost(true)}
           onShowAuth={() => setShowAuth(true)}
         />
-        <AddPosts onClose={() => setAddPost(false)}/>
+        <AddPosts onClose={() => setAddPost(false)} />
+        <MobileNav
+          token={token}
+          onShowAuth={() => setShowAuth(true)}
+          onAddPost={() => setAddPost(true)}
+          onHome={() => {
+            setAddPost(false);
+            setShowAuth(false);
+          }}
+        />
       </>
     );
   }
@@ -48,10 +58,19 @@ function App() {
               setShowAuth(false);
             }}
             onClose={() => {
-              setShowAuth(false)
+              setShowAuth(false);
             }}
           />
         </div>
+        <MobileNav
+          token={token}
+          onShowAuth={() => setShowAuth(true)}
+          onAddPost={() => setAddPost(true)}
+          onHome={() => {
+            setAddPost(false);
+            setShowAuth(false);
+          }}
+        />
       </>
     );
   }
@@ -68,7 +87,16 @@ function App() {
         <h1>Witaj na BLOG.DEV</h1>
         <GetPosts />
       </main>
-      <footer>footer</footer>
+      <MobileNav
+        token={token}
+        onShowAuth={() => setShowAuth(true)}
+        onLogout={handleLogout}
+        onAddPost={() => setAddPost(true)}
+        onHome={() => {
+          setAddPost(false);
+          setShowAuth(false);
+        }}
+      />
     </>
   );
 }
